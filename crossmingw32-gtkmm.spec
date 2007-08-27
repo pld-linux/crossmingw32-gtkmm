@@ -1,13 +1,13 @@
 Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross Mingw32 version
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja Mingw32
-%define		_realname   gtkmm
-Name:		crossmingw32-%{_realname}
-Version:	2.10.10
+%define		realname   gtkmm
+Name:		crossmingw32-%{realname}
+Version:	2.10.11
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.10/%{_realname}-%{version}.tar.bz2
-# Source0-md5:	c86ccbed9735be84689baac2f38015bf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.10/%{realname}-%{version}.tar.bz2
+# Source0-md5:	999e1b6f23bcc69c9effbeaf71686adc
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -29,7 +29,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target			i386-mingw32
 %define		target_platform 	i386-pc-mingw32
-%define		arch			%{_prefix}/%{target}
 
 %define		_sysprefix		/usr
 %define		_prefix			%{_sysprefix}/%{target}
@@ -163,7 +162,7 @@ DLL pangomm library for Windows.
 Biblioteka DLL pangomm dla Windows.
 
 %prep
-%setup -q -n %{_realname}-%{version}
+%setup -q -n %{realname}-%{version}
 
 %build
 export PKG_CONFIG_PATH=%{_prefix}/lib/pkgconfig
