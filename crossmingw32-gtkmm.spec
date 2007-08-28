@@ -19,7 +19,7 @@ BuildRequires:	crossmingw32-gtk+2 >= 2.10.11
 BuildRequires:	crossmingw32-pango >= 1.16.2
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base >= 1:5.6.0
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.15
 Requires:	%{name}-atk = %{version}-%{release}
 Requires:	%{name}-pango = %{version}-%{release}
 Requires:	crossmingw32-gtk+2 >= 2.10.11
@@ -165,7 +165,7 @@ Biblioteka DLL pangomm dla Windows.
 %setup -q -n %{realname}-%{version}
 
 %build
-export PKG_CONFIG_PATH=%{_prefix}/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 %{__libtoolize}
 %{__aclocal} -I scripts
 %{__autoconf}
