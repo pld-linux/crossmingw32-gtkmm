@@ -2,27 +2,28 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross Mingw32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja Mingw32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.10.11
+Version:	2.12.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.10/%{realname}-%{version}.tar.bz2
-# Source0-md5:	999e1b6f23bcc69c9effbeaf71686adc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.12/%{realname}-%{version}.tar.bz2
+# Source0-md5:	b7a6adb1c9c7e1b6464b4240a4b7ba19
+Patch0:		gtkmm-gtkprint.patch
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	crossmingw32-atk >= 1.18.0
-BuildRequires:	crossmingw32-cairomm >= 1.2.4
+BuildRequires:	crossmingw32-atk >= 1.20.0
+BuildRequires:	crossmingw32-cairomm >= 1.4.4
 BuildRequires:	crossmingw32-gcc-c++ >= 3.3.1
-BuildRequires:	crossmingw32-glibmm >= 2.12.9
-BuildRequires:	crossmingw32-gtk+2 >= 2.10.11
-BuildRequires:	crossmingw32-pango >= 1.16.2
+BuildRequires:	crossmingw32-glibmm >= 2.14.0
+BuildRequires:	crossmingw32-gtk+2 >= 2.12.0
+BuildRequires:	crossmingw32-pango >= 1.18.1
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig >= 1:0.15
 Requires:	%{name}-atk = %{version}-%{release}
 Requires:	%{name}-pango = %{version}-%{release}
-Requires:	crossmingw32-gtk+2 >= 2.10.11
+Requires:	crossmingw32-gtk+2 >= 2.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -72,7 +73,7 @@ Summary(pl.UTF-8):	Biblioteki DLL gtkmm dla Windows
 Group:		Applications/Emulators
 Requires:	%{name}-atk-dll = %{version}-%{release}
 Requires:	%{name}-pango-dll = %{version}-%{release}
-Requires:	crossmingw32-gtk+2-dll >= 2.10.11
+Requires:	crossmingw32-gtk+2-dll >= 2.12.0
 Requires:	wine
 
 %description dll
@@ -85,8 +86,8 @@ Biblioteki DLL gtkmm dla Windows.
 Summary:	A C++ interface for atk library (cross mingw32 version)
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk (wersja skrośna mingw32)
 Group:		Development/Libraries
-Requires:	crossmingw32-atk >= 1.18.0
-Requires:	crossmingw32-glibmm >= 2.12.9
+Requires:	crossmingw32-atk >= 1.20.0
+Requires:	crossmingw32-glibmm >= 2.14.0
 
 %description atk
 A C++ interface for atk library (cross mingw32 version).
@@ -110,8 +111,8 @@ Statyczna biblioteka atkmm (wersja skrośna mingw32).
 Summary:	DLL atkmm library for Windows
 Summary(pl.UTF-8):	Biblioteka DLL atkmm dla Windows
 Group:		Applications/Emulators
-Requires:	crossmingw32-atk-dll >= 1.18.0
-Requires:	crossmingw32-glibmm-dll >= 2.12.9
+Requires:	crossmingw32-atk-dll >= 1.20.0
+Requires:	crossmingw32-glibmm-dll >= 2.14.0
 Requires:	wine
 
 %description atk-dll
@@ -124,9 +125,9 @@ Biblioteka DLL atkmm dla Windows.
 Summary:	A C++ interface for pango library (cross mingw32 version)
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki pango (wersja skrośna mingw32)
 Group:		Development/Libraries
-Requires:	crossmingw32-cairomm >= 1.2.4
-Requires:	crossmingw32-glibmm >= 2.12.9
-Requires:	crossmingw32-pango >= 1.16.2
+Requires:	crossmingw32-cairomm >= 1.4.4
+Requires:	crossmingw32-glibmm >= 2.14.0
+Requires:	crossmingw32-pango >= 1.18.1
 
 %description pango
 A C++ interface for pango library (cross mingw32 version).
@@ -150,9 +151,9 @@ Statyczna biblioteka pangomm (wersja skrośna mingw32).
 Summary:	DLL pangomm library for Windows
 Summary(pl.UTF-8):	Biblioteka DLL pangomm dla Windows
 Group:		Applications/Emulators
-Requires:	crossmingw32-cairomm-dll >= 1.2.4
-Requires:	crossmingw32-glibmm-dll >= 2.12.9
-Requires:	crossmingw32-pango-dll >= 1.16.2
+Requires:	crossmingw32-cairomm-dll >= 1.4.4
+Requires:	crossmingw32-glibmm-dll >= 2.14.0
+Requires:	crossmingw32-pango-dll >= 1.18.1
 Requires:	wine
 
 %description pango-dll
@@ -163,6 +164,7 @@ Biblioteka DLL pangomm dla Windows.
 
 %prep
 %setup -q -n %{realname}-%{version}
+%patch0 -p1
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
