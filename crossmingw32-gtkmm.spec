@@ -2,13 +2,12 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross Mingw32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja Mingw32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.12.1
+Version:	2.12.3
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.12/%{realname}-%{version}.tar.bz2
-# Source0-md5:	b2dbd8c9d69062c51dfd2835faef9cf1
-Patch0:		gtkmm-gtkprint.patch
+# Source0-md5:	d7e47028df7867d85372d82d9fb1d8b6
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -164,7 +163,6 @@ Biblioteka DLL pangomm dla Windows.
 
 %prep
 %setup -q -n %{realname}-%{version}
-%patch0 -p1
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
