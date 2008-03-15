@@ -2,12 +2,13 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross Mingw32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja Mingw32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.12.3
+Version:	2.12.5
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.12/%{realname}-%{version}.tar.bz2
-# Source0-md5:	d7e47028df7867d85372d82d9fb1d8b6
+# Source0-md5:	ca21c054d7f7bbd9c737f22e14bccf82
+Patch0:		gtkmm-lt.patch
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -164,6 +165,7 @@ Biblioteka DLL pangomm dla Windows.
 
 %prep
 %setup -q -n %{realname}-%{version}
+%patch0 -p1
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
@@ -204,19 +206,26 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog CHANGES NEWS PORTING README
-%{_libdir}/libg[dt]kmm-2.4.dll.a
-%{_libdir}/libg[dt]kmm-2.4.la
-%{_libdir}/g[dt]kmm-2.4
-%{_includedir}/g[dt]kmm-2.4
-%{_pkgconfigdir}/g[dt]kmm-2.4.pc
+%{_libdir}/libgdkmm-2.4.dll.a
+%{_libdir}/libgtkmm-2.4.dll.a
+%{_libdir}/libgdkmm-2.4.la
+%{_libdir}/libgtkmm-2.4.la
+%{_libdir}/gdkmm-2.4
+%{_libdir}/gtkmm-2.4
+%{_includedir}/gdkmm-2.4
+%{_includedir}/gtkmm-2.4
+%{_pkgconfigdir}/gdkmm-2.4.pc
+%{_pkgconfigdir}/gtkmm-2.4.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libg[dt]kmm-2.4.a
+%{_libdir}/libgdkmm-2.4.a
+%{_libdir}/libgtkmm-2.4.a
 
 %files dll
 %defattr(644,root,root,755)
-%{_dlldir}/libg[dt]kmm-2.4-*.dll
+%{_dlldir}/libgdkmm-2.4-*.dll
+%{_dlldir}/libgtkmm-2.4-*.dll
 
 %files atk
 %defattr(644,root,root,755)
