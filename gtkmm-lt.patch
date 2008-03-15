@@ -1,0 +1,148 @@
+--- gtkmm-2.12.5/configure.in.orig	2008-02-24 11:32:26.000000000 +0100
++++ gtkmm-2.12.5/configure.in	2008-03-15 16:37:58.575785958 +0100
+@@ -128,72 +128,6 @@
+ 
+ AC_CHECK_FUNC(mkfifo, AC_DEFINE(HAVE_MKFIFO))
+ 
+-# functions used in demos/gtk-demo. Undefined in config.h.
+-AC_LANG_PUSH(C++)
+-AC_MSG_CHECKING([for flockfile])
+-AC_TRY_LINK([
+-#include <stdio.h>],[
+-flockfile (NULL);],[
+-  AC_MSG_RESULT(yes)
+-  AC_DEFINE(HAVE_FLOCKFILE, 1,
+-    [Define to 1 if you have the `flockfile' function.])],[
+-  AC_MSG_RESULT(no)
+-  AC_MSG_CHECKING([for flockfile with a custom prototype])
+-  AC_TRY_LINK([
+-#include <stdio.h>
+-
+-extern "C" void flockfile (FILE *);],[
+-flockfile (NULL);],[
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE(HAVE_FLOCKFILE, 1,
+-      [Define to 1 if you have the `flockfile' function.])
+-    AC_DEFINE(NEED_FLOCKFILE_PROTO, 1,
+-      [Define if flockfile() prototype needed.])],[
+-    AC_MSG_RESULT(not available)])])
+-
+-AC_MSG_CHECKING([for funlockfile])
+-AC_TRY_LINK([
+-#include <stdio.h>],[
+-funlockfile (NULL);],[
+-  AC_MSG_RESULT(yes)
+-  AC_DEFINE(HAVE_FUNLOCKFILE, 1,
+-    [Define to 1 if you have the `funlockfile' function.])],[
+-  AC_MSG_RESULT(no)
+-  AC_MSG_CHECKING([for funlockfile with a custom prototype])
+-  AC_TRY_LINK([
+-#include <stdio.h>
+-
+-extern "C" void funlockfile (FILE *);],[
+-funlockfile (NULL);],[
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE(HAVE_FUNLOCKFILE, 1,
+-      [Define to 1 if you have the `funlockfile' function.])
+-    AC_DEFINE(NEED_FUNLOCKFILE_PROTO, 1,
+-      [Define if funlockfile() prototype needed.])],[
+-    AC_MSG_RESULT(not available)])])
+-
+-AC_MSG_CHECKING([for getc_unlocked])
+-AC_TRY_LINK([
+-#include <stdio.h>],[
+-getc_unlocked (NULL);],[
+-  AC_MSG_RESULT(yes)
+-  AC_DEFINE(HAVE_GETC_UNLOCKED, 1,
+-    [Define to 1 if you have the `getc_unlocked' function.])],[
+-  AC_MSG_RESULT(no)
+-  AC_MSG_CHECKING([for getc_unlocked with a custom prototype])
+-  AC_TRY_LINK([
+-#include <stdio.h>
+-
+-extern "C" int getc_unlocked (FILE *);],[
+-getc_unlocked (NULL);],[
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE(HAVE_GETC_UNLOCKED, 1,
+-      [Define to 1 if you have the `getc_unlocked' function.])
+-    AC_DEFINE(NEED_GETC_UNLOCKED_PROTO, 1,
+-      [Define if getc_unlocked() prototype needed.])],[
+-    AC_MSG_RESULT(not available)])])
+-AC_LANG_POP(C++)
+-
+ #########################################################################
+ #  Dependancy checks
+ #########################################################################
+@@ -282,6 +216,72 @@
+ 
+ AC_LANG_CPLUSPLUS
+ 
++# functions used in demos/gtk-demo. Undefined in config.h.
++AC_LANG_PUSH(C++)
++AC_MSG_CHECKING([for flockfile])
++AC_TRY_LINK([
++#include <stdio.h>],[
++flockfile (NULL);],[
++  AC_MSG_RESULT(yes)
++  AC_DEFINE(HAVE_FLOCKFILE, 1,
++    [Define to 1 if you have the `flockfile' function.])],[
++  AC_MSG_RESULT(no)
++  AC_MSG_CHECKING([for flockfile with a custom prototype])
++  AC_TRY_LINK([
++#include <stdio.h>
++
++extern "C" void flockfile (FILE *);],[
++flockfile (NULL);],[
++    AC_MSG_RESULT(yes)
++    AC_DEFINE(HAVE_FLOCKFILE, 1,
++      [Define to 1 if you have the `flockfile' function.])
++    AC_DEFINE(NEED_FLOCKFILE_PROTO, 1,
++      [Define if flockfile() prototype needed.])],[
++    AC_MSG_RESULT(not available)])])
++
++AC_MSG_CHECKING([for funlockfile])
++AC_TRY_LINK([
++#include <stdio.h>],[
++funlockfile (NULL);],[
++  AC_MSG_RESULT(yes)
++  AC_DEFINE(HAVE_FUNLOCKFILE, 1,
++    [Define to 1 if you have the `funlockfile' function.])],[
++  AC_MSG_RESULT(no)
++  AC_MSG_CHECKING([for funlockfile with a custom prototype])
++  AC_TRY_LINK([
++#include <stdio.h>
++
++extern "C" void funlockfile (FILE *);],[
++funlockfile (NULL);],[
++    AC_MSG_RESULT(yes)
++    AC_DEFINE(HAVE_FUNLOCKFILE, 1,
++      [Define to 1 if you have the `funlockfile' function.])
++    AC_DEFINE(NEED_FUNLOCKFILE_PROTO, 1,
++      [Define if funlockfile() prototype needed.])],[
++    AC_MSG_RESULT(not available)])])
++
++AC_MSG_CHECKING([for getc_unlocked])
++AC_TRY_LINK([
++#include <stdio.h>],[
++getc_unlocked (NULL);],[
++  AC_MSG_RESULT(yes)
++  AC_DEFINE(HAVE_GETC_UNLOCKED, 1,
++    [Define to 1 if you have the `getc_unlocked' function.])],[
++  AC_MSG_RESULT(no)
++  AC_MSG_CHECKING([for getc_unlocked with a custom prototype])
++  AC_TRY_LINK([
++#include <stdio.h>
++
++extern "C" int getc_unlocked (FILE *);],[
++getc_unlocked (NULL);],[
++    AC_MSG_RESULT(yes)
++    AC_DEFINE(HAVE_GETC_UNLOCKED, 1,
++      [Define to 1 if you have the `getc_unlocked' function.])
++    AC_DEFINE(NEED_GETC_UNLOCKED_PROTO, 1,
++      [Define if getc_unlocked() prototype needed.])],[
++    AC_MSG_RESULT(not available)])])
++AC_LANG_POP(C++)
++
+ 
+ # Create a list of input directories for Doxygen.
+ GTKMM_DOXYGEN_INPUT_SUBDIRS([pango atk gdk gtk])
