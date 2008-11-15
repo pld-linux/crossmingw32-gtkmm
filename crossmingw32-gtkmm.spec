@@ -9,7 +9,7 @@ Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.12/%{realname}-%{version}.tar.bz2
 # Source0-md5:	ad199f4a392799134c128deab48fee30
 Patch0:		gtkmm-lt.patch
-URL:		http://gtkmm.sourceforge.net/
+URL:		http://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	crossmingw32-atk >= 1.20.0
