@@ -2,12 +2,12 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross Mingw32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja Mingw32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.14.3
+Version:	2.16.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.14/%{realname}-%{version}.tar.bz2
-# Source0-md5:	10039f35d7f815d47f926a13cefe65d6
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.16/%{realname}-%{version}.tar.bz2
+# Source0-md5:	a82e3b5b93008421ff67df16d1e51ec2
 URL:		http://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -15,14 +15,14 @@ BuildRequires:	crossmingw32-atk >= 1.24.0
 BuildRequires:	crossmingw32-cairomm >= 1.6.3
 BuildRequires:	crossmingw32-gcc-c++ >= 3.3.1
 BuildRequires:	crossmingw32-glibmm >= 2.18.0
-BuildRequires:	crossmingw32-gtk+2 >= 2.14.0
+BuildRequires:	crossmingw32-gtk+2 >= 2.16.0
 BuildRequires:	crossmingw32-pangomm >= 2.14.0
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig >= 1:0.15
 Requires:	%{name}-atk = %{version}-%{release}
 Requires:	crossmingw32-cairomm >= 1.6.3
-Requires:	crossmingw32-gtk+2 >= 2.14.0
+Requires:	crossmingw32-gtk+2 >= 2.16.0
 Requires:	crossmingw32-pangomm >= 2.14.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -81,7 +81,7 @@ Summary(pl.UTF-8):	Biblioteki DLL gtkmm dla Windows
 Group:		Applications/Emulators
 Requires:	%{name}-atk-dll = %{version}-%{release}
 Requires:	crossmingw32-cairomm-dll >= 1.6.3
-Requires:	crossmingw32-gtk+2-dll >= 2.12.0
+Requires:	crossmingw32-gtk+2-dll >= 2.16.0
 Requires:	crossmingw32-pangomm-dll >= 2.14.0
 Requires:	wine
 
