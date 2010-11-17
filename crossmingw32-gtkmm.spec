@@ -2,16 +2,16 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross MinGW32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja MinGW32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.20.3
+Version:	2.22.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.16/%{realname}-%{version}.tar.bz2
-# Source0-md5:	c35f236091b4f96fe45c53b4107400a9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.22/%{realname}-%{version}.tar.bz2
+# Source0-md5:	4356dfde44b13f7fb1bfbd97623f37dd
 URL:		http://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	crossmingw32-atk >= 1.24.0
+BuildRequires:	crossmingw32-atkmm >= 2.22.0
 BuildRequires:	crossmingw32-cairomm >= 1.6.3
 BuildRequires:	crossmingw32-gcc-c++ >= 3.3.1
 BuildRequires:	crossmingw32-glibmm >= 2.24.0
@@ -21,7 +21,7 @@ BuildRequires:	libtool >= 2:1.5
 BuildRequires:	mm-common >= 0.8
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig >= 1:0.15
-Requires:	%{name}-atk = %{version}-%{release}
+Requires:	crossmingw32-atkmm >= 2.22.0
 Requires:	crossmingw32-cairomm >= 1.6.3
 Requires:	crossmingw32-gtk+2 >= 2.20.0
 Requires:	crossmingw32-pangomm >= 2.26.0
@@ -80,7 +80,7 @@ Statyczne biblioteki gtkmm (wersja skrośna MinGW32).
 Summary:	DLL gtkmm libraries for Windows
 Summary(pl.UTF-8):	Biblioteki DLL gtkmm dla Windows
 Group:		Applications/Emulators
-Requires:	%{name}-atk-dll = %{version}-%{release}
+Requires:	crossmingw32-atkmm-dll >= 2.22.0
 Requires:	crossmingw32-cairomm-dll >= 1.6.3
 Requires:	crossmingw32-gtk+2-dll >= 2.20.0
 Requires:	crossmingw32-pangomm-dll >= 2.26.0
@@ -91,45 +91,6 @@ DLL gtkmm libraries for Windows.
 
 %description dll -l pl.UTF-8
 Biblioteki DLL gtkmm dla Windows.
-
-%package atk
-Summary:	A C++ interface for atk library (cross MinGW32 version)
-Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk (wersja skrośna MinGW32)
-Group:		Development/Libraries
-Requires:	crossmingw32-atk >= 1.24.0
-Requires:	crossmingw32-glibmm >= 2.24.0
-
-%description atk
-A C++ interface for atk library (cross MinGW32 version).
-
-%description atk -l pl.UTF-8
-Interfejs C++ dla biblioteki atk (wersja skrośna MinGW32).
-
-%package atk-static
-Summary:	Static atkmm library (cross MinGW32 version)
-Summary(pl.UTF-8):	Statyczna biblioteka atkmm (wersja skrośna MinGW32)
-Group:		Development/Libraries
-Requires:	%{name}-atk = %{version}-%{release}
-
-%description atk-static
-Static atkmm library (cross MinGW32 version).
-
-%description atk-static -l pl.UTF-8
-Statyczna biblioteka atkmm (wersja skrośna MinGW32).
-
-%package atk-dll
-Summary:	DLL atkmm library for Windows
-Summary(pl.UTF-8):	Biblioteka DLL atkmm dla Windows
-Group:		Applications/Emulators
-Requires:	crossmingw32-atk-dll >= 1.24.0
-Requires:	crossmingw32-glibmm-dll >= 2.24.0
-Requires:	wine
-
-%description atk-dll
-DLL atkmm library for Windows.
-
-%description atk-dll -l pl.UTF-8
-Biblioteka DLL atkmm dla Windows.
 
 %prep
 %setup -q -n %{realname}-%{version}
@@ -163,9 +124,6 @@ mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 %{target}-strip -g -R.comment -R.note $RPM_BUILD_ROOT%{_libdir}/*.a
 %endif
 
-# just demo
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gtkmm-2.4
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -192,18 +150,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_dlldir}/libgdkmm-2.4-*.dll
 %{_dlldir}/libgtkmm-2.4-*.dll
-
-%files atk
-%defattr(644,root,root,755)
-%{_libdir}/libatkmm-1.6.dll.a
-%{_libdir}/libatkmm-1.6.la
-%{_includedir}/atkmm-1.6
-%{_pkgconfigdir}/atkmm-1.6.pc
-
-%files atk-static
-%defattr(644,root,root,755)
-%{_libdir}/libatkmm-1.6.a
-
-%files atk-dll
-%defattr(644,root,root,755)
-%{_dlldir}/libatkmm-1.6-*.dll
