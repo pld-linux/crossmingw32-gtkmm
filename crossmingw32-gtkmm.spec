@@ -2,12 +2,12 @@ Summary:	A C++ interface for the GTK+ (a GUI library for X) - cross MinGW32 vers
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja MinGW32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
-Version:	2.22.0
+Version:	2.24.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.22/%{realname}-%{version}.tar.bz2
-# Source0-md5:	4356dfde44b13f7fb1bfbd97623f37dd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.24/%{realname}-%{version}.tar.bz2
+# Source0-md5:	d0413781fdb884e0ccba52844c94485f
 URL:		http://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -16,15 +16,16 @@ BuildRequires:	crossmingw32-cairomm >= 1.6.3
 BuildRequires:	crossmingw32-gcc-c++ >= 3.3.1
 BuildRequires:	crossmingw32-glibmm >= 2.24.0
 BuildRequires:	crossmingw32-gtk+2 >= 2.20.0
-BuildRequires:	crossmingw32-pangomm >= 2.26.0
+BuildRequires:	crossmingw32-pangomm >= 2.28.0
 BuildRequires:	libtool >= 2:1.5
-BuildRequires:	mm-common >= 0.8
+BuildRequires:	mm-common >= 0.9.4
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig >= 1:0.15
+BuildRequires:	rpmbuild(macros) >= 1.446
 Requires:	crossmingw32-atkmm >= 2.22.0
 Requires:	crossmingw32-cairomm >= 1.6.3
 Requires:	crossmingw32-gtk+2 >= 2.20.0
-Requires:	crossmingw32-pangomm >= 2.26.0
+Requires:	crossmingw32-pangomm >= 2.28.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -83,7 +84,7 @@ Group:		Applications/Emulators
 Requires:	crossmingw32-atkmm-dll >= 2.22.0
 Requires:	crossmingw32-cairomm-dll >= 1.6.3
 Requires:	crossmingw32-gtk+2-dll >= 2.20.0
-Requires:	crossmingw32-pangomm-dll >= 2.26.0
+Requires:	crossmingw32-pangomm-dll >= 2.28.0
 Requires:	wine
 
 %description dll
@@ -96,7 +97,7 @@ Biblioteki DLL gtkmm dla Windows.
 %setup -q -n %{realname}-%{version}
 
 %build
-export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig:%{_npkgconfigdir}
 %{__libtoolize}
 %{__aclocal} -I build
 %{__autoconf}
