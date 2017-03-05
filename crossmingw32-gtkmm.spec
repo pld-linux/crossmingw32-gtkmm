@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja MinGW32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
 Version:	2.24.5
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.24/%{realname}-%{version}.tar.xz
