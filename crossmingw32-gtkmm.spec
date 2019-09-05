@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Wrapper C++ dla GTK+ - skrośna wersja MinGW32
 %define		realname   gtkmm
 Name:		crossmingw32-%{realname}
 Version:	2.24.5
-Release:	4
+Release:	5
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.24/%{realname}-%{version}.tar.xz
@@ -129,6 +129,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_dlldir}
 %{__mv} $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
+
 %if 0%{!?debug:1}
 %{target}-strip --strip-unneeded -R.comment -R.note $RPM_BUILD_ROOT%{_dlldir}/*.dll
 %{target}-strip -g -R.comment -R.note $RPM_BUILD_ROOT%{_libdir}/*.a
@@ -142,8 +144,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS PORTING README
 %{_libdir}/libgdkmm-2.4.dll.a
 %{_libdir}/libgtkmm-2.4.dll.a
-%{_libdir}/libgdkmm-2.4.la
-%{_libdir}/libgtkmm-2.4.la
 %{_libdir}/gdkmm-2.4
 %{_libdir}/gtkmm-2.4
 %{_includedir}/gdkmm-2.4
