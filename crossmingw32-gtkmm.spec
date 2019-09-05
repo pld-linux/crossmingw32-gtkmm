@@ -8,7 +8,7 @@ License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.24/%{realname}-%{version}.tar.xz
 # Source0-md5:	6c59ae8bbff48fad9132f23af347acf1
-URL:		http://www.gtkmm.org/
+URL:		https://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	crossmingw32-atkmm >= 2.22.2
@@ -158,5 +158,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files dll
 %defattr(644,root,root,755)
-%{_dlldir}/libgdkmm-2.4-*.dll
-%{_dlldir}/libgtkmm-2.4-*.dll
+%{_dlldir}/libgdkmm-2.4-1.dll
+%{_dlldir}/libgtkmm-2.4-1.dll
